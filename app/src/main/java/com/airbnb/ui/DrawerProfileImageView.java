@@ -1,4 +1,4 @@
-package com.airbnb.airbnb.ui;
+package com.airbnb.ui;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -13,7 +13,7 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
 
-import com.airbnb.airbnb.R;
+import com.airbnb.R;
 
 public class DrawerProfileImageView extends View {
 
