@@ -1,8 +1,24 @@
 <resources>
 
-    <!-- Base application theme. -->
-    <style name="AppTheme" parent="android:Theme.Holo.Light.DarkActionBar">
-        <!-- Customize your theme here. -->
+    <style name="AppTheme" parent="android:Theme.Material.Light.NoActionBar">
+    </style>
+
+    <style name="DrawerItem">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">56dp</item>
+        <item name="android:paddingLeft">36dp</item>
+        <item name="android:text">@string/invite_friends</item>
+        <item name="android:gravity">left|center_vertical</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="DrawerItem.Light" parent="DrawerItem">
+        <item name="android:background">@drawable/drawer_item_light_ripple</item>
+    </style>
+
+    <style name="DrawerItem.Dark" parent="DrawerItem">
+        <item name="android:background">@drawable/drawer_item_dark_ripple</item>
+        <item name="android:textColor">#ffeeeeee</item>
     </style>
 
 </resources>

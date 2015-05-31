@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.DrawerLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true" >
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/material_deep_teal_500" >
+
+    </FrameLayout>
+
+    <LinearLayout
+        android:layout_width="300dp"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_gravity="end"
+        android:background="@android:color/white">
+        <com.airbnb.airbnb.ui.DrawerProfileImageView
+            android:layout_width="match_parent"
+            android:layout_height="156dp"
+            android:background="#d9d9d9"
+            app:drawable="@drawable/profile"
+            app:drawableSize="96dp"
+            app:strokeWidth="8dp"
+            app:strokeColor="@android:color/white" />
+        <Button
+            style="@style/DrawerItem.Light"
+            android:text="@string/invite_friends" />
+        <Button
+            style="@style/DrawerItem.Light"
+            android:text="@string/why_host" />
+        <Button
+            style="@style/DrawerItem.Light"
+            android:text="@string/help" />
+        <Button
+            style="@style/DrawerItem.Light"
+            android:text="@string/settings" />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+        <Button
+            style="@style/DrawerItem.Dark"
+            android:text="@string/list_your_space" />
+    </LinearLayout>
+</android.support.v4.widget.DrawerLayout>
