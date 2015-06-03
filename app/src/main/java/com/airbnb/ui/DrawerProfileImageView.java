@@ -7,6 +7,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.BitmapShader;
 import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.Shader;
 import android.util.AttributeSet;
@@ -15,11 +16,16 @@ import android.view.View;
 
 import com.airbnb.R;
 
+/**
+ * Custom view that displays a circular profile picture image with a stroke around it.
+ */
 public class DrawerProfileImageView extends View {
 
     private final int mDrawableSize;
     private final Paint mBackgroundPaint;
+    private final Matrix mTranslationMatrix = new Matrix();
 
+    private Bitmap mBitmap;
     private Paint mBitmapPaint;
 
     public DrawerProfileImageView(Context context, AttributeSet attrs) {
@@ -32,9 +38,10 @@ public class DrawerProfileImageView extends View {
         mDrawableSize = ta.getDimensionPixelSize(R.styleable.DrawerProfileImageView_drawableSize, 0);
         mBackgroundPaint = new Paint();
         mBackgroundPaint.setStyle(Paint.Style.STROKE);
-        mBackgroundPaint.setColor(ta.getColor(R.styleable.DrawerProfileImageView_strokeColor, Color.WHITE));
-        mBackgroundPaint.setStrokeWidth(ta.getDimensionPixelSize(R.styleable.DrawerProfileImageView_strokeWidth, 0));
-        Log.d("Airbnb", "Background paint width " + mBackgroundPaint.getStrokeWidth() + "\tColor: " + mBackgroundPaint.getColor());
+        int strokeColor = ta.getColor(R.styleable.DrawerProfileImageView_strokeColor, Color.WHITE);
+        mBackgroundPaint.setColor(strokeColor);
+        int strokeWidth = ta.getDimensionPixelSize(R.styleable.DrawerProfileImageView_strokeWidth, 0);
+        mBackgroundPaint.setStrokeWidth(strokeWidth);
         ta.recycle();
     }
 
@@ -42,26 +49,34 @@ public class DrawerProfileImageView extends View {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-        if (mBitmapPaint == null) {
+        if (mBitmap == null) {
             return;
+        }
+
+        if (mBitmapPaint == null) {
+            float aspectRatio = mBitmap.getHeight() / (float) mBitmap.getWidth();
+            Bitmap scaledBitmap = Bitmap.createScaledBitmap(
+                    mBitmap, mDrawableSize, (int) (mDrawableSize * aspectRatio), true);
+            mBitmapPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
+            BitmapShader shader = new BitmapShader(
+                    scaledBitmap, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP);
+            mBitmapPaint.setShader(shader);
         }
 
         int cx = getWidth() / 2;
         int cy = getHeight() / 2;
         int r = mDrawableSize / 2;
         canvas.drawCircle(cx, cy, r, mBackgroundPaint);
-        // TODO: this shader doesn't currently draw the bitmap correctly
+        int dx = getWidth() / 2 - mDrawableSize / 2;
+        int dy = getHeight() / 2 - mDrawableSize / 2;
+        mTranslationMatrix.setTranslate(dx, dy);
+        mBitmapPaint.getShader().setLocalMatrix(mTranslationMatrix);
         canvas.drawCircle(cx, cy, r, mBitmapPaint);
     }
 
     private void setImageBitmap(Bitmap bitmap) {
-        if (bitmap == null) {
-            mBitmapPaint = null;
-            return;
-        }
-        mBitmapPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
-        Shader shader = new BitmapShader(bitmap, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP);
-        mBitmapPaint.setShader(shader);
+        mBitmap = bitmap;
+        mBitmapPaint = null;
         invalidate();
     }
 }
