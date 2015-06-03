@@ -1,6 +1,10 @@
 <resources>
 
-    <style name="AppTheme" parent="android:Theme.Material.Light.NoActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">#d9d9d9</item>
+        <item name="colorPrimaryDark">#353535</item>
+        <item name="colorAccent">#c43b52</item>
+        <item name="android:windowBackground">@android:color/black</item>
     </style>
 
     <style name="DrawerItem">

@@ -1,4 +1,6 @@
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.airbnb">
+<manifest
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.airbnb">
 
     <application
         android:allowBackup="true"
@@ -9,8 +11,8 @@
             android:name=".MainActivity"
             android:label="Airbnb" >
             <intent-filter>
-                <action android:name="ANDROID.INTENT.ACTION.MAIN" />
-                <category android:name="ANDROID.INTENT.CATEGORY.DEFAULT" />
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
