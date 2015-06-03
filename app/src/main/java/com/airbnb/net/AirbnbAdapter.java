@@ -31,6 +31,7 @@ public class AirbnbAdapter {
             MockRestAdapter mockAdapter = MockRestAdapter.from(adapter);
             mockAdapter.setDelay(250);
             mockAdapter.setVariancePercentage(50);
+            mockAdapter.setErrorPercentage(0);
             mService = mockAdapter.create(AirbnbService.class, new MockAirbnbService());
         } else {
             mService = adapter.create(AirbnbService.class);
