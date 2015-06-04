@@ -18,6 +18,7 @@
 
     <style name="DrawerItem.Light" parent="DrawerItem">
         <item name="android:background">@drawable/drawer_item_light_ripple</item>
+        <item name="android:textColor">#ff222222</item>
     </style>
 
     <style name="DrawerItem.Dark" parent="DrawerItem">

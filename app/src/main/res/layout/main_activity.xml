@@ -50,19 +50,22 @@
 
     <LinearLayout
         android:id="@+id/drawer"
-        android:layout_width="256dp"
+        android:layout_width="264dp"
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:layout_gravity="end"
-        android:background="@android:color/white">
-        <com.airbnb.ui.RoundedImageView
+        android:background="@android:color/white" >
+        <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="148dp"
-            android:background="#d9d9d9"
-            app:drawable="@drawable/profile"
-            app:drawableSize="96dp"
-            app:strokeWidth="8dp"
-            app:strokeColor="@android:color/white" />
+            android:background="#ebebeb" >
+            <com.airbnb.ui.RoundedImageView
+                android:layout_width="96dp"
+                android:layout_height="96dp"
+                android:layout_gravity="center"
+                android:src="@drawable/profile"
+                app:strokeWidth="3dp" />
+        </FrameLayout>
         <Button
             style="@style/DrawerItem.Light"
             android:text="@string/invite_friends" />
