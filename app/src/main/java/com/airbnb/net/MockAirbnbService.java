@@ -21,7 +21,9 @@ public class MockAirbnbService implements AirbnbService {
         backgroundUri = Uri.parse("http://img1.wikia.nocookie.net/__cb20131117072042/disney/images/2/2f/NewYorkCity-CATFA.png");
         mItems.add(new ListItem(new HeroItem("New York", "Popular Destination", backgroundUri, 0)));
         mItems.add(new ListItem(new HeroItem("Paris", "4 Listings", backgroundUri, textBackgroundColor)));
-        mItems.add(new ListItem(new Listing("$295", "Albert Park, Australia", null, null)));
+        Uri listingUri = Uri.parse("https://a0.muscache.com/ac/pictures/24433197/e593c170_original.jpg?interpolation=lanczos-none&size=x_medium&output-format=jpg&output-quality=70");
+        Uri hostUri = Uri.parse("https://a1.muscache.com/ac/users/5283465/profile_pic/1433105369/original.jpg?interpolation=lanczos-none&crop=w:w;*,*&crop=h:h;*,*&resize=68:*&output-format=jpg&output-quality=70");
+        mItems.add(new ListItem(new Listing("$295", "Albert Park, Australia", listingUri, hostUri)));
         mItems.add(new ListItem(new HeroItem("San Francisco", null, null, 0)));
         mItems.add(new ListItem(new HeroItem("Chicago", null, null, 0)));
         mItems.add(new ListItem(new HeroItem("Washington DC", null, null, 0)));

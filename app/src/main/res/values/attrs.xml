@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <declare-styleable name="DrawerProfileImageView">
+    <declare-styleable name="RoundedImageView">
         <attr name="drawable" format="reference" />
         <attr name="drawableSize" />
         <attr name="strokeColor" format="color" />
