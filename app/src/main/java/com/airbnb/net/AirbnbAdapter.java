@@ -6,7 +6,7 @@ import retrofit.MockRestAdapter;
 import retrofit.RestAdapter;
 import rx.Observable;
 
-public class AirbnbAdapter {
+public class AirbnbAdapter implements AirbnbService{
     private static final boolean USE_MOCK_ADAPTER = true;
 
 
@@ -38,7 +38,13 @@ public class AirbnbAdapter {
         }
     }
 
+    @Override
     public Observable<List<ListItem>> getSearchTabItems() {
         return mService.getSearchTabItems();
+    }
+
+    @Override
+    public Observable<List<HeroItem>> getWishList() {
+        return mService.getWishList();
     }
 }

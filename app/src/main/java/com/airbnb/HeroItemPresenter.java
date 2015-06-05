@@ -30,13 +30,16 @@ public class HeroItemPresenter implements ListPresenter<HeroItem, HeroItemPresen
         } else {
             holder.textView.setBackgroundColor(heroItem.textBackgroundColor);
         }
+        ImageView imageView = holder.backgroundImageView;
         if (heroItem.imageUri != null) {
-            ImageView imageView = holder.backgroundImageView;
             Picasso.with(context)
                     .load(heroItem.imageUri)
+                    .placeholder(R.color.hero_placeholder)
                     .fit()
                     .centerCrop()
                     .into(imageView);
+        } else {
+            imageView.setBackgroundResource(R.color.hero_placeholder);
         }
     }
 

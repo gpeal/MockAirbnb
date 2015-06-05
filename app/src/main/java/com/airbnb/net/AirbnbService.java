@@ -10,4 +10,7 @@ interface AirbnbService {
     @GET("/search_tab")
     Observable<List<ListItem>> getSearchTabItems();
 
+    @GET("/wish_list")
+    Observable<List<HeroItem>> getWishList();
+
 }
