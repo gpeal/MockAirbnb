@@ -18,7 +18,6 @@ import butterknife.OnClick;
 
 public class MainFragment extends Fragment {
 
-
     @DrawableRes
     private static final int[] TAB_ICON_IDS = {
             R.drawable.icon_tab_search,
@@ -86,7 +85,7 @@ public class MainFragment extends Fragment {
             if (controller == null) {
                 switch (TAB_ICON_IDS[position]) {
                     case R.drawable.icon_tab_search:
-                        controller = new SearchController(getActivity());
+                        controller = new SearchController((MainActivity) getActivity());
                         break;
                     case R.drawable.icon_tab_wishlists:
                         controller = new WishListController(getActivity());

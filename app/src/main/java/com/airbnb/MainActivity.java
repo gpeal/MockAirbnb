@@ -2,15 +2,11 @@ package com.airbnb;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.widget.FrameLayout;
 
 import butterknife.ButterKnife;
-import butterknife.InjectView;
 
 public class MainActivity extends Activity {
     private static final String TAG = "MainActivity";
-
-    @InjectView(R.id.container) FrameLayout container;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,6 +16,23 @@ public class MainActivity extends Activity {
 
         getFragmentManager().beginTransaction()
                 .replace(R.id.container, new MainFragment())
+                .addToBackStack(null)
+                .commit();
+    }
+
+    public void showListing(long id) {
+        // TODO
+    }
+
+    public void showHeroItem(long id) {
+        HeroFragment frag = new HeroFragment();
+        Bundle args = new Bundle();
+        args.putLong(HeroFragment.ARG_HERO_ID, id);
+        frag.setArguments(args);
+
+        getFragmentManager().beginTransaction()
+                .replace(R.id.container, frag)
+                .addToBackStack(null)
                 .commit();
     }
 }

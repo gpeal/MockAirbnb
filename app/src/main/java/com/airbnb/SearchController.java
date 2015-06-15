@@ -1,6 +1,5 @@
 package com.airbnb;
 
-import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -17,19 +16,19 @@ import rx.android.schedulers.AndroidSchedulers;
 public class SearchController implements ViewController {
     private static final String TAG = "SearchController";
 
-    private final Context mContext;
+    private final MainActivity mActivity;
 
     private SearchTabAdapter mAdapter;
 
-    public SearchController(Context context) {
-        mContext = context;
+    public SearchController(MainActivity activity) {
+        mActivity = activity;
     }
 
     @Override
     public ViewGroup initialize(ViewGroup container) {
-        LayoutInflater inflater = LayoutInflater.from(mContext);
+        LayoutInflater inflater = LayoutInflater.from(mActivity);
         RecyclerView rv = (RecyclerView) inflater.inflate(R.layout.recycler_view, container, false);
-        mAdapter = new SearchTabAdapter();
+        mAdapter = new SearchTabAdapter(mActivity);
         rv.setAdapter(mAdapter);
 
         loadSearchTab();

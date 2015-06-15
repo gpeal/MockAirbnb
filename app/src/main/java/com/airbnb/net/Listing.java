@@ -1,16 +1,17 @@
 package com.airbnb.net;
 
 import android.net.Uri;
-import android.support.annotation.IntDef;
 
 public class Listing {
 
-    public CharSequence title;
-    public CharSequence text;
-    public Uri imageUri;
-    public Uri hostImageUri;
+    public final long id;
+    public final CharSequence title;
+    public final CharSequence text;
+    public final Uri imageUri;
+    public final Uri hostImageUri;
 
-    public Listing(CharSequence title, CharSequence text, Uri imageUri, Uri hostImageUri) {
+    public Listing(long id, CharSequence title, CharSequence text, Uri imageUri, Uri hostImageUri) {
+        this.id = id;
         this.title = title;
         this.text = text;
         this.imageUri = imageUri;

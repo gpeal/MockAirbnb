@@ -3,6 +3,7 @@ package com.airbnb;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.util.SparseArray;
+import android.view.View;
 import android.view.ViewGroup;
 
 import com.airbnb.net.ListItem;
@@ -13,11 +14,13 @@ public class SearchTabAdapter extends RecyclerView.Adapter {
     private static final int VIEW_TYPE_HERO = 0;
     private static final int VIEW_TYPE_LISTING = 1;
 
+    private final MainActivity mActivity;
     private final SparseArray<ListPresenter> mPresenters = new SparseArray<>(2);
 
     private List<ListItem> mItems;
 
-    public SearchTabAdapter() {
+    public SearchTabAdapter(MainActivity activity) {
+        mActivity = activity;
         mPresenters.put(VIEW_TYPE_HERO, new HeroItemPresenter());
         mPresenters.put(VIEW_TYPE_LISTING, new ListingItemPresenter());
     }
@@ -29,14 +32,26 @@ public class SearchTabAdapter extends RecyclerView.Adapter {
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-        ListItem item = mItems.get(position);
+        final ListItem item = mItems.get(position);
         int viewType = holder.getItemViewType();
         ListPresenter presenter = getPresenter(viewType);
 
         if (presenter instanceof HeroItemPresenter) {
             ((HeroItemPresenter) presenter).bindViewHolder((HeroItemPresenter.ViewHolder) holder, item.heroItem);
+            holder.itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    mActivity.showHeroItem(item.heroItem.id);
+                }
+            });
         } else if (presenter instanceof ListingItemPresenter) {
             ((ListingItemPresenter) presenter).bindViewHolder((ListingItemPresenter.ViewHolder) holder, item.listing);
+            holder.itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    mActivity.showListing(item.listing.id);
+                }
+            });
         } else {
             throw new IllegalArgumentException("Don't know how to handle presenter of type " + presenter.getClass().getSimpleName());
         }
