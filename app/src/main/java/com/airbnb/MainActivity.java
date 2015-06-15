@@ -21,7 +21,15 @@ public class MainActivity extends Activity {
     }
 
     public void showListing(long id) {
-        // TODO
+        ListingFragment frag = new ListingFragment();
+        Bundle args = new Bundle();
+        args.putLong(ListingFragment.ARG_LISTING_ID, id);
+        frag.setArguments(args);
+
+        getFragmentManager().beginTransaction()
+                .replace(R.id.container, frag)
+                .addToBackStack(null)
+                .commit();
     }
 
     public void showHeroItem(long id) {
