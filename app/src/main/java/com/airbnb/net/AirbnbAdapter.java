@@ -1,12 +1,14 @@
 package com.airbnb.net;
 
+import com.airbnb.Message;
+
 import java.util.List;
 
 import retrofit.MockRestAdapter;
 import retrofit.RestAdapter;
 import rx.Observable;
 
-public class AirbnbAdapter implements AirbnbService{
+public class AirbnbAdapter implements AirbnbService {
     private static final boolean USE_MOCK_ADAPTER = true;
 
 
@@ -46,5 +48,10 @@ public class AirbnbAdapter implements AirbnbService{
     @Override
     public Observable<List<HeroItem>> getWishList() {
         return mService.getWishList();
+    }
+
+    @Override
+    public Observable<List<Message>> getMessages() {
+        return mService.getMessages();
     }
 }

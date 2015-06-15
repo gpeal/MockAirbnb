@@ -1,6 +1,7 @@
 package com.airbnb.net;
 
 import android.net.Uri;
+import android.support.annotation.IntDef;
 
 public class Listing {
 
@@ -15,4 +16,6 @@ public class Listing {
         this.imageUri = imageUri;
         this.hostImageUri = hostImageUri;
     }
+
+
 }

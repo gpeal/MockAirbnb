@@ -1,6 +1,10 @@
 package com.airbnb.net;
 
 import android.net.Uri;
+import android.os.SystemClock;
+import android.text.format.DateUtils;
+
+import com.airbnb.Message;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,5 +44,17 @@ public class MockAirbnbService implements AirbnbService {
         items.add(new HeroItem("Dream Homes", "0 Listings", uri, textBackgroundColor));
         items.add(new HeroItem("Vacation Places", "0 Listings", uri, textBackgroundColor));
         return Observable.just(items);
+    }
+
+    @Override
+    public Observable<List<Message>> getMessages() {
+        List<Message> messages = new ArrayList<>();
+
+        Uri listingUri = Uri.parse("https://a0.muscache.com/ac/pictures/24433197/e593c170_original.jpg?interpolation=lanczos-none&size=x_medium&output-format=jpg&output-quality=70");
+        Listing listing = new Listing("Charming Cottage", "In the heart of Montreal", listingUri, listingUri);
+        long date = SystemClock.currentThreadTimeMillis() - DateUtils.DAY_IN_MILLIS;
+        messages.add(new Message(listing, "I would love to stay in your place", "Bryan", date, Message.STATUS_INQUIRY));
+
+        return Observable.just(messages);
     }
 }

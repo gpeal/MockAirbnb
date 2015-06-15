@@ -1,5 +1,7 @@
 package com.airbnb.net;
 
+import com.airbnb.Message;
+
 import java.util.List;
 
 import retrofit.http.GET;
@@ -12,5 +14,8 @@ interface AirbnbService {
 
     @GET("/wish_list")
     Observable<List<HeroItem>> getWishList();
+
+    @GET("/messages")
+    Observable<List<Message>> getMessages();
 
 }
