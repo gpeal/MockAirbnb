@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto" >
+    <ImageView
+        android:id="@+id/listing_image"
+        android:layout_width="match_parent"
+        android:layout_height="256dp"
+        android:layout_alignParentTop="true" />
+    <com.airbnb.ui.RoundedImageView
+        android:id="@+id/host_image"
+        android:layout_width="52dp"
+        android:layout_height="52dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="46dp"
+        android:src="@drawable/profile"
+        app:strokeWidth="1.5dp"/>
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/listing_image"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:textColor="#ff555555"
+        android:textSize="22sp" />
+    <TextView
+        android:id="@+id/text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_below="@id/title"
+        android:textColor="#ff777777"
+        android:textSize="16sp" />
+</merge>

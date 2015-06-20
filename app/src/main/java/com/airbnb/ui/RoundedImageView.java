@@ -51,7 +51,7 @@ public class RoundedImageView extends ImageView {
     protected void onDraw(@NonNull Canvas canvas) {
         Drawable drawable = getDrawable();
 
-        if (drawable == null) {
+        if (!(drawable instanceof BitmapDrawable)) {
             return;
         }
 

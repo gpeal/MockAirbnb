@@ -1,65 +1,65 @@
 package com.airbnb;
 
-import android.support.annotation.NonNull;
+import android.support.annotation.LayoutRes;
 import android.support.v7.widget.RecyclerView;
-import android.util.SparseArray;
+import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.airbnb.net.ListItem;
+import com.airbnb.ui.HeroItemLayout;
+import com.airbnb.ui.ListingItemLayout;
 
 import java.util.List;
 
-public class SearchTabAdapter extends RecyclerView.Adapter {
+public class SearchTabAdapter extends RecyclerView.Adapter<ViewHolder> {
+    private static final String TAG = "SearchTabAdapter";
     private static final int VIEW_TYPE_HERO = 0;
     private static final int VIEW_TYPE_LISTING = 1;
 
     private final MainActivity mActivity;
-    private final SparseArray<ListPresenter> mPresenters = new SparseArray<>(2);
 
     private List<ListItem> mItems;
 
     public SearchTabAdapter(MainActivity activity) {
         mActivity = activity;
-        mPresenters.put(VIEW_TYPE_HERO, new HeroItemPresenter());
-        mPresenters.put(VIEW_TYPE_LISTING, new ListingItemPresenter());
     }
 
     @Override
-    public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return getPresenter(viewType).createViewHolder(parent);
-    }
-
-    @Override
-    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-        final ListItem item = mItems.get(position);
-        int viewType = holder.getItemViewType();
-        ListPresenter presenter = getPresenter(viewType);
-
-        if (presenter instanceof HeroItemPresenter) {
-            ((HeroItemPresenter) presenter).bindViewHolder((HeroItemPresenter.ViewHolder) holder, item.heroItem);
-            holder.itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    mActivity.showHeroItem(item.heroItem.id);
-                }
-            });
-        } else if (presenter instanceof ListingItemPresenter) {
-            ((ListingItemPresenter) presenter).bindViewHolder((ListingItemPresenter.ViewHolder) holder, item.listing);
-            holder.itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    mActivity.showListing(item.listing.id);
-                }
-            });
-        } else {
-            throw new IllegalArgumentException("Don't know how to handle presenter of type " + presenter.getClass().getSimpleName());
+    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        @LayoutRes int layoutRes;
+        switch (viewType) {
+            case VIEW_TYPE_HERO:
+                layoutRes = R.layout.hero_item;
+                break;
+            case VIEW_TYPE_LISTING:
+                layoutRes = R.layout.listing_item;
+                break;
+            default:
+                throw new IllegalArgumentException("No layout for viewType " + viewType);
         }
+        try {
+            LayoutInflater inflater = LayoutInflater.from(parent.getContext());
+            View view = inflater.inflate(layoutRes, parent, false);
+            return new ViewHolder(view);
+        } catch (Throwable t) {
+            Log.e(TAG, "Error inflating view", t);
+        }
+        return null;
     }
 
     @Override
-    public void onViewDetachedFromWindow(RecyclerView.ViewHolder holder) {
-        getPresenter(holder.getItemViewType()).unbindViewHolder(holder);
+    public void onBindViewHolder(ViewHolder holder, int position) {
+        final ListItem item = mItems.get(position);
+        switch(holder.getItemViewType()) {
+            case VIEW_TYPE_HERO:
+                ((HeroItemLayout) holder.itemView).setHeroItem(item.heroItem);
+                break;
+            case VIEW_TYPE_LISTING:
+                ((ListingItemLayout) holder.itemView).setListing(item.listing);
+                break;
+        }
     }
 
     @Override
@@ -82,17 +82,5 @@ public class SearchTabAdapter extends RecyclerView.Adapter {
     public void setItems(List<ListItem> items) {
         mItems = items;
         notifyDataSetChanged();
-    }
-
-    /**
-     * Return the {@link ListPresenter} for the given view type or throw {@link IllegalArgumentException}.
-     */
-    @NonNull
-    private ListPresenter getPresenter(int viewType) {
-        ListPresenter presenter = mPresenters.get(viewType);
-        if (presenter == null) {
-            throw new IllegalArgumentException("No presenter for type " + viewType);
-        }
-        return presenter;
     }
 }

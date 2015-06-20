@@ -1,52 +1,75 @@
-package com.airbnb;
+package com.airbnb.ui;
 
 import android.content.Context;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
-import android.support.v7.widget.RecyclerView;
 import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.Spanned;
 import android.text.TextPaint;
 import android.text.style.MetricAffectingSpan;
 import android.text.style.RelativeSizeSpan;
+import android.util.AttributeSet;
 import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.airbnb.R;
 import com.airbnb.net.Listing;
 import com.squareup.picasso.Picasso;
 
-public class ListingItemPresenter implements ListPresenter<Listing, ListingItemPresenter.ViewHolder> {
+import butterknife.ButterKnife;
+import butterknife.InjectView;
 
-    @Override
-    public RecyclerView.ViewHolder createViewHolder(ViewGroup parent) {
-        LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-        View view = inflater.inflate(R.layout.listing_item, parent, false);
-        return new ViewHolder(view);
+public class ListingItemLayout extends RelativeLayout {
+
+    @InjectView(R.id.listing_image) public ImageView mListingImageView;
+    @InjectView(R.id.host_image) public ImageView mHostImageView;
+    @InjectView(R.id.title) public TextView mTitleView;
+    @InjectView(R.id.text) public TextView mTextView;
+
+    public ListingItemLayout(Context context) {
+        this(context, null);
+    }
+
+    public ListingItemLayout(Context context, AttributeSet attrs) {
+        this(context, attrs, 0);
+    }
+
+    public ListingItemLayout(Context context, AttributeSet attrs, int defStyleAttr) {
+        super(context, attrs, defStyleAttr);
+        LayoutInflater inflater = LayoutInflater.from(context);
+        inflater.inflate(R.layout.listing_item_contents, this, true);
+        ButterKnife.inject(this, this);
     }
 
     @Override
-    public void bindViewHolder(ViewHolder holder, Listing listing) {
-        Context context = holder.itemView.getContext();
+    protected void onDetachedFromWindow() {
+        super.onDetachedFromWindow();
+        Picasso.with(getContext()).cancelRequest(mListingImageView);
+        Picasso.with(getContext()).cancelRequest(mHostImageView);
+    }
+
+    public void setListing(Listing listing) {
         if (listing.imageUri != null) {
-            Drawable placeholder = new ColorDrawable(context.getResources().getColor(R.color.material_blue_grey_900));
-            Picasso.with(context)
+            Drawable placeholder = new ColorDrawable(getResources().getColor(R.color.material_blue_grey_900));
+            Picasso.with(getContext())
                     .load(listing.imageUri)
                     .placeholder(placeholder)
                     .fit()
                     .centerCrop()
-                    .into(holder.listingImageView);
+                    .into(mListingImageView);
         }
 
         if (listing.hostImageUri != null) {
-            Picasso.with(context)
+            Drawable placeholder = new ColorDrawable(getResources().getColor(R.color.material_blue_grey_800));
+            Picasso.with(getContext())
                     .load(listing.hostImageUri)
+                    .placeholder(placeholder)
                     .fit()
                     .centerCrop()
-                    .into(holder.hostImageView);
+                    .into(mHostImageView);
         }
 
         // The dollar sign is slightly smaller and top aligned in the TextView.
@@ -54,30 +77,8 @@ public class ListingItemPresenter implements ListPresenter<Listing, ListingItemP
         float relativeTextSize = 0.75f;
         span.setSpan(new RelativeSizeSpan(relativeTextSize), 0, 1, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
         span.setSpan(new TopAlignmentSpan(relativeTextSize), 0, 1, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-        holder.titleView.setText(span);
-        holder.textView.setText(listing.text);
-    }
-
-    @Override
-    public void unbindViewHolder(ViewHolder holder) {
-        Context context = holder.itemView.getContext();
-        Picasso.with(context).cancelRequest(holder.listingImageView);
-        Picasso.with(context).cancelRequest(holder.hostImageView);
-    }
-
-    public static final class ViewHolder extends RecyclerView.ViewHolder {
-        public ImageView listingImageView;
-        public ImageView hostImageView;
-        public TextView titleView;
-        public TextView textView;
-
-        public ViewHolder(View itemView) {
-            super(itemView);
-            listingImageView = (ImageView) itemView.findViewById(R.id.listing_image);
-            hostImageView = (ImageView) itemView.findViewById(R.id.host_image);
-            titleView = (TextView) itemView.findViewById(R.id.title);
-            textView = (TextView) itemView.findViewById(R.id.text);
-        }
+        mTitleView.setText(span);
+        mTextView.setText(listing.text);
     }
 
     /**
