@@ -27,7 +27,7 @@ public class ListingItemLayout extends RelativeLayout {
     @InjectView(R.id.listing_image) public ImageView mListingImageView;
     @InjectView(R.id.host_image) public ImageView mHostImageView;
     @InjectView(R.id.title) public TextView mTitleView;
-    @InjectView(R.id.text) public TextView mTextView;
+    @InjectView(R.id.description) public TextView mDescriptionView;
 
     public ListingItemLayout(Context context) {
         this(context, null);
@@ -78,7 +78,7 @@ public class ListingItemLayout extends RelativeLayout {
         span.setSpan(new RelativeSizeSpan(relativeTextSize), 0, 1, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
         span.setSpan(new TopAlignmentSpan(relativeTextSize), 0, 1, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
         mTitleView.setText(span);
-        mTextView.setText(listing.text);
+        mDescriptionView.setText(listing.description);
     }
 
     /**

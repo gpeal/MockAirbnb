@@ -1,7 +1,6 @@
 package com.airbnb.net;
 
 import android.net.Uri;
-import android.os.SystemClock;
 import android.text.format.DateUtils;
 
 import com.airbnb.Message;
@@ -27,7 +26,7 @@ public class MockAirbnbService implements AirbnbService {
         items.add(new ListItem(new HeroItem(5, "Paris", "4 Listings", backgroundUri, textBackgroundColor)));
         Uri listingUri = Uri.parse("https://a0.muscache.com/ac/pictures/24433197/e593c170_original.jpg?interpolation=lanczos-none&size=x_medium&output-format=jpg&output-quality=70");
         Uri hostUri = Uri.parse("https://a1.muscache.com/ac/users/5283465/profile_pic/1433105369/original.jpg?interpolation=lanczos-none&crop=w:w;*,*&crop=h:h;*,*&resize=68:*&output-format=jpg&output-quality=70");
-        items.add(new ListItem(new Listing(6, "$295", "Albert Park, Australia", listingUri, hostUri)));
+        items.add(new ListItem(new Listing(6, "Bryan", "$295", "Albert Park, Australia", listingUri, hostUri)));
         items.add(new ListItem(new HeroItem(7, "San Francisco", null, null, 0)));
         items.add(new ListItem(new HeroItem(8, "Chicago", null, null, 0)));
         items.add(new ListItem(new HeroItem(9, "Washington DC", null, null, 0)));
@@ -50,11 +49,14 @@ public class MockAirbnbService implements AirbnbService {
     public Observable<List<Message>> getMessages() {
         List<Message> messages = new ArrayList<>();
 
-        Uri listingUri = Uri.parse("https://a0.muscache.com/ac/pictures/24433197/e593c170_original.jpg?interpolation=lanczos-none&size=x_medium&output-format=jpg&output-quality=70");
-        Listing listing = new Listing(1, "Charming Cottage", "In the heart of Montreal", listingUri, listingUri);
-        long date = SystemClock.currentThreadTimeMillis() - DateUtils.DAY_IN_MILLIS;
-        messages.add(new Message(listing, "I would love to stay in your place", "Bryan", date, Message.STATUS_INQUIRY));
-
+        String title = "John Steinbeck's Cottage";
+        String description = "John Steinbeck's Cottage";
+        Uri listingtUri = Uri.parse("https://a0.muscache.com/ac/pictures/24433197/e593c170_original.jpg?interpolation=lanczos-none&size=x_medium&output-format=jpg&output-quality=70");
+        Uri hostUri = Uri.parse("https://a1.muscache.com/ac/users/5283465/profile_pic/1433105369/original.jpg?interpolation=lanczos-none&crop=w:w;*,*&crop=h:h;*,*&resize=68:*&output-format=jpg&output-quality=70");
+        Listing listing = new Listing(1, "Kevin & Vicky", title, description, listingtUri, hostUri);
+        long date = System.currentTimeMillis() - DateUtils.DAY_IN_MILLIS;
+        String message = "Just wanted to touch base to make sure you guys arrived safely last night and that you have settled in nicely";
+        messages.add(new Message(listing, message, date, Message.STATUS_ACCEPTED));
         return Observable.just(messages);
     }
 }
