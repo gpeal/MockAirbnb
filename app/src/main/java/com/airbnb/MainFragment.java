@@ -88,7 +88,7 @@ public class MainFragment extends Fragment {
                         controller = new SearchController((MainActivity) getActivity());
                         break;
                     case R.drawable.icon_tab_wishlists:
-                        controller = new WishListController(getActivity());
+                        controller = new WishListController((MainActivity) getActivity());
                         break;
                     case R.drawable.icon_tab_messages:
                         controller = new MessagesController(getActivity());

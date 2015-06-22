@@ -12,7 +12,13 @@ import java.util.List;
 
 public class WishListAdapter extends RecyclerView.Adapter<ViewHolder> {
 
+    private final MainActivity mActivity;
+
     private List<HeroItem> mItems;
+
+    public WishListAdapter(MainActivity activity) {
+        mActivity = activity;
+    }
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -23,7 +29,14 @@ public class WishListAdapter extends RecyclerView.Adapter<ViewHolder> {
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        ((HeroItemLayout) holder.itemView).setHeroItem(mItems.get(position));
+        final HeroItem heroItem = mItems.get(position);
+        ((HeroItemLayout) holder.itemView).setHeroItem(heroItem);
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mActivity.showHeroItem(heroItem.id);
+            }
+        });
     }
 
     @Override

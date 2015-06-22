@@ -55,9 +55,21 @@ public class SearchTabAdapter extends RecyclerView.Adapter<ViewHolder> {
         switch(holder.getItemViewType()) {
             case VIEW_TYPE_HERO:
                 ((HeroItemLayout) holder.itemView).setHeroItem(item.heroItem);
+                holder.itemView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        mActivity.showHeroItem(item.heroItem.id);
+                    }
+                });
                 break;
             case VIEW_TYPE_LISTING:
                 ((ListingItemLayout) holder.itemView).setListing(item.listing);
+                holder.itemView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        mActivity.showListing(item.listing.id);
+                    }
+                });
                 break;
         }
     }
