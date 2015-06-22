@@ -16,7 +16,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.airbnb.R;
-import com.airbnb.net.Listing;
+import com.airbnb.net.ListingItem;
 import com.squareup.picasso.Picasso;
 
 import butterknife.ButterKnife;
@@ -51,21 +51,21 @@ public class ListingItemLayout extends RelativeLayout {
         Picasso.with(getContext()).cancelRequest(mHostImageView);
     }
 
-    public void setListing(Listing listing) {
-        if (listing.imageUri != null) {
+    public void setListing(ListingItem listingItem) {
+        if (listingItem.imageUri != null) {
             Drawable placeholder = new ColorDrawable(getResources().getColor(R.color.material_blue_grey_900));
             Picasso.with(getContext())
-                    .load(listing.imageUri)
+                    .load(listingItem.imageUri)
                     .placeholder(placeholder)
                     .fit()
                     .centerCrop()
                     .into(mListingImageView);
         }
 
-        if (listing.hostImageUri != null) {
+        if (listingItem.hostImageUri != null) {
             Drawable placeholder = new ColorDrawable(getResources().getColor(R.color.material_blue_grey_800));
             Picasso.with(getContext())
-                    .load(listing.hostImageUri)
+                    .load(listingItem.hostImageUri)
                     .placeholder(placeholder)
                     .fit()
                     .centerCrop()
@@ -73,12 +73,12 @@ public class ListingItemLayout extends RelativeLayout {
         }
 
         // The dollar sign is slightly smaller and top aligned in the TextView.
-        Spannable span = new SpannableString(listing.title);
+        Spannable span = new SpannableString(listingItem.title);
         float relativeTextSize = 0.75f;
         span.setSpan(new RelativeSizeSpan(relativeTextSize), 0, 1, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
         span.setSpan(new TopAlignmentSpan(relativeTextSize), 0, 1, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
         mTitleView.setText(span);
-        mDescriptionView.setText(listing.description);
+        mDescriptionView.setText(listingItem.description);
     }
 
     /**

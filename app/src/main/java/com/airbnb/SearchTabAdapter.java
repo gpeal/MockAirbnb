@@ -63,11 +63,11 @@ public class SearchTabAdapter extends RecyclerView.Adapter<ViewHolder> {
                 });
                 break;
             case VIEW_TYPE_LISTING:
-                ((ListingItemLayout) holder.itemView).setListing(item.listing);
+                ((ListingItemLayout) holder.itemView).setListing(item.listingItem);
                 holder.itemView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        mActivity.showListing(item.listing.id);
+                        mActivity.showListing(item.listingItem.id);
                     }
                 });
                 break;
@@ -79,7 +79,7 @@ public class SearchTabAdapter extends RecyclerView.Adapter<ViewHolder> {
         ListItem item = mItems.get(position);
         if (item.heroItem != null) {
             return VIEW_TYPE_HERO;
-        } else if (item.listing != null) {
+        } else if (item.listingItem != null) {
             return VIEW_TYPE_LISTING;
         } else {
             throw new IllegalArgumentException("Invalid list item at position (" + position + ")");

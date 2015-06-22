@@ -4,7 +4,7 @@ import android.content.res.Resources;
 import android.support.annotation.ColorInt;
 import android.support.annotation.IntDef;
 
-import com.airbnb.net.Listing;
+import com.airbnb.net.ListingItem;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
@@ -19,13 +19,13 @@ public class Message {
     public static final int STATUS_ACCEPTED = 2;
     public static final int STATUS_DECLINED = 3;
 
-    public Listing listing;
+    public ListingItem listingItem;
     public CharSequence message;
     public long date;
     public @Status int status;
 
-    public Message(Listing listing, CharSequence message, long date, @Status int status) {
-        this.listing = listing;
+    public Message(ListingItem listingItem, CharSequence message, long date, @Status int status) {
+        this.listingItem = listingItem;
         this.message = message;
         this.date = date;
         this.status = status;

@@ -6,13 +6,13 @@ package com.airbnb.net;
 public class ListItem {
 
     public HeroItem heroItem;
-    public Listing listing;
+    public ListingItem listingItem;
 
     public ListItem(HeroItem heroItem) {
         this.heroItem = heroItem;
     }
 
-    public ListItem(Listing listing) {
-        this.listing = listing;
+    public ListItem(ListingItem listingItem) {
+        this.listingItem = listingItem;
     }
 }

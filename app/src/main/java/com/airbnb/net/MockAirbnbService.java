@@ -17,6 +17,9 @@ public class MockAirbnbService implements AirbnbService {
         int textBackgroundColor = 0xffb19a40;
         Uri backgroundUri = Uri.parse("http://sportsplanningguide.com/wp-content/uploads/2013/12/Lake-Tahoe-Sunset-1.png");
         items.add(new ListItem(new HeroItem(1, "Lake Tahoe", "Popular Destination", backgroundUri, 0)));
+        Uri listingUri = Uri.parse("https://a0.muscache.com/ac/pictures/24433197/e593c170_original.jpg?interpolation=lanczos-none&size=x_medium&output-format=jpg&output-quality=70");
+        Uri hostUri = Uri.parse("https://a1.muscache.com/ac/users/5283465/profile_pic/1433105369/original.jpg?interpolation=lanczos-none&crop=w:w;*,*&crop=h:h;*,*&resize=68:*&output-format=jpg&output-quality=70");
+        items.add(new ListItem(new ListingItem(6, "Bryan", "$295", "Albert Park, Australia", listingUri, hostUri)));
         backgroundUri = Uri.parse("https://newevolutiondesigns.com/images/freebies/los-angeles-santa-monica.jpg");
         items.add(new ListItem(new HeroItem(2, "Los Angeles", "Popular Destination", backgroundUri, 0)));
         backgroundUri = Uri.parse("http://www.travellinguide.com/uploads/images/fotogaleri/2015/Mart/21-things-you-can-do-in-san-francisco-for-free.jpg");
@@ -24,9 +27,6 @@ public class MockAirbnbService implements AirbnbService {
         backgroundUri = Uri.parse("http://img1.wikia.nocookie.net/__cb20131117072042/disney/images/2/2f/NewYorkCity-CATFA.png");
         items.add(new ListItem(new HeroItem(4, "New York", "Popular Destination", backgroundUri, 0)));
         items.add(new ListItem(new HeroItem(5, "Paris", "4 Listings", backgroundUri, textBackgroundColor)));
-        Uri listingUri = Uri.parse("https://a0.muscache.com/ac/pictures/24433197/e593c170_original.jpg?interpolation=lanczos-none&size=x_medium&output-format=jpg&output-quality=70");
-        Uri hostUri = Uri.parse("https://a1.muscache.com/ac/users/5283465/profile_pic/1433105369/original.jpg?interpolation=lanczos-none&crop=w:w;*,*&crop=h:h;*,*&resize=68:*&output-format=jpg&output-quality=70");
-        items.add(new ListItem(new Listing(6, "Bryan", "$295", "Albert Park, Australia", listingUri, hostUri)));
         items.add(new ListItem(new HeroItem(7, "San Francisco", null, null, 0)));
         items.add(new ListItem(new HeroItem(8, "Chicago", null, null, 0)));
         items.add(new ListItem(new HeroItem(9, "Washington DC", null, null, 0)));
@@ -53,10 +53,10 @@ public class MockAirbnbService implements AirbnbService {
         String description = "John Steinbeck's Cottage";
         Uri listingtUri = Uri.parse("https://a0.muscache.com/ac/pictures/24433197/e593c170_original.jpg?interpolation=lanczos-none&size=x_medium&output-format=jpg&output-quality=70");
         Uri hostUri = Uri.parse("https://a1.muscache.com/ac/users/5283465/profile_pic/1433105369/original.jpg?interpolation=lanczos-none&crop=w:w;*,*&crop=h:h;*,*&resize=68:*&output-format=jpg&output-quality=70");
-        Listing listing = new Listing(1, "Kevin & Vicky", title, description, listingtUri, hostUri);
+        ListingItem listingItem = new ListingItem(1, "Kevin & Vicky", title, description, listingtUri, hostUri);
         long date = System.currentTimeMillis() - DateUtils.DAY_IN_MILLIS;
         String message = "Just wanted to touch base to make sure you guys arrived safely last night and that you have settled in nicely";
-        messages.add(new Message(listing, message, date, Message.STATUS_ACCEPTED));
+        messages.add(new Message(listingItem, message, date, Message.STATUS_ACCEPTED));
         return Observable.just(messages);
     }
 }

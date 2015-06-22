@@ -47,15 +47,15 @@ public class MessageItemLayout extends RelativeLayout {
     }
 
     public void setMessage(Message message) {
-        mHostNameView.setText(message.listing.host);
+        mHostNameView.setText(message.listingItem.host);
         mMessageView.setText(message.message);
-        mStatusAndListingNameView.setText(getStatusAndListingText(message.status, message.listing.title));
+        mStatusAndListingNameView.setText(getStatusAndListingText(message.status, message.listingItem.title));
         String date = DateUtils.formatDateTime(getContext(), message.date, DateUtils.FORMAT_ABBREV_ALL);
         mDateView.setText(date);
 
-        if (message.listing.hostImageUri != null) {
+        if (message.listingItem.hostImageUri != null) {
             Picasso.with(getContext())
-                    .load(message.listing.hostImageUri)
+                    .load(message.listingItem.hostImageUri)
                     .fit()
                     .centerCrop()
                     .into(mHostImageView);
