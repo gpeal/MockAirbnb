@@ -29,7 +29,7 @@
                 <android.support.design.widget.TabLayout
                     android:id="@+id/tab_layout"
                     android:layout_width="0dp"
-                    android:layout_height="56dp"
+                    android:layout_height="?android:attr/actionBarSize"
                     android:layout_weight="1" />
                 <ImageButton
                     android:id="@+id/drawer_profile_button"

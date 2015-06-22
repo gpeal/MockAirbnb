@@ -5,6 +5,7 @@ import com.airbnb.Message;
 import java.util.List;
 
 import retrofit.http.GET;
+import retrofit.http.Path;
 import rx.Observable;
 
 interface AirbnbService {
@@ -17,5 +18,8 @@ interface AirbnbService {
 
     @GET("/messages")
     Observable<List<Message>> getMessages();
+
+    @GET("/listing/{id}")
+    Observable<Listing> getListing(@Path("id") long id);
 
 }

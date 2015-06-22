@@ -6,8 +6,11 @@ import android.text.format.DateUtils;
 import com.airbnb.Message;
 
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
 
+import retrofit.http.Path;
 import rx.Observable;
 
 public class MockAirbnbService implements AirbnbService {
@@ -58,5 +61,37 @@ public class MockAirbnbService implements AirbnbService {
         String message = "Just wanted to touch base to make sure you guys arrived safely last night and that you have settled in nicely";
         messages.add(new Message(listingItem, message, date, Message.STATUS_ACCEPTED));
         return Observable.just(messages);
+    }
+
+    @Override
+    public Observable<Listing> getListing(@Path("id") long id) {
+        return Observable.just(new Listing(
+                "John Steinbeck's Cottage" /** Title */,
+                "Pacific Grove, CA" /** location */,
+                new Uri[] {
+                        Uri.parse("https://a0.muscache.com/ac/pictures/32061655/9792844b_original.jpg?interpolation=lanczos-none&size=large&output-format=jpg&output-quality=70"),
+                        Uri.parse("https://a0.muscache.com/ac/pictures/32061843/a454953d_original.jpg?interpolation=lanczos-none&size=large&output-format=jpg&output-quality=70")
+                } /** images */,
+                false /** isStarred */,
+                19500 /** price */,
+                true /** instant bookable */,
+                5.0f /** rating */,
+                69 /** number of reviews */,
+                Uri.parse("https://a2.muscache.com/ac/users/5517174/profile_pic/1427385973/original.jpg?interpolation=lanczos-none&crop=w:w;*,*&crop=h:h;*,*&resize=225:*&output-format=jpg&output-quality=70") /** host image */,
+                "Kevin & Vicky" /** host name */,
+                Listing.ROOM_TYPE_ENTIRE_HOME /** room type */,
+                5 /** number of guests */,
+                1 /** number of bedrooms */,
+                1 /** number of beds */,
+                Uri.parse("http://TOP_REVIEW_IMAGE") /** top review image */,
+                "Nina" /** top review name */,
+                new GregorianCalendar(2015, 06, 01).getTimeInMillis() /** top review date */,
+                "We had the best time at the Steinbeck cottage. The place is really very very nice, " +
+                        "great attention to every detail, very clean and everything you could need " +
+                        "was provided. Thank you Kevin and Vicky, your place is amazing and we had " +
+                        "a great time!" /** top review message */,
+                36.621019f /** lat */,
+                -121.921040f /** lng */,
+                "Eardley Avenue, Pacific Grove, CA 93950, United States"));
     }
 }

@@ -6,6 +6,7 @@ import java.util.List;
 
 import retrofit.MockRestAdapter;
 import retrofit.RestAdapter;
+import retrofit.http.Path;
 import rx.Observable;
 
 public class AirbnbAdapter implements AirbnbService {
@@ -53,5 +54,10 @@ public class AirbnbAdapter implements AirbnbService {
     @Override
     public Observable<List<Message>> getMessages() {
         return mService.getMessages();
+    }
+
+    @Override
+    public Observable<Listing> getListing(@Path("id") long id) {
+        return mService.getListing(id);
     }
 }

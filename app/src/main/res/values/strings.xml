@@ -7,4 +7,7 @@
     <string name="help">Help</string>
     <string name="settings">Settings</string>
     <string name="list_your_space">List Your Space</string>
+
+    <!-- Listing -->
+    <string name="error_loading_listing">Error loading listing</string>
 </resources>
