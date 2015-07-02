@@ -18,7 +18,7 @@ public class Listing {
     public final CharSequence location;
     public final Uri[] images;
     public final boolean isStarred;
-    public final int price;
+    public final CharSequence price;
     public final boolean isInstantBookable;
     public final float rating;
     public final int numberOfReviews;
@@ -41,7 +41,7 @@ public class Listing {
             CharSequence location,
             Uri[] images,
             boolean isStarred,
-            int price,
+            CharSequence price,
             boolean isInstantBookable,
             float rating,
             int numberOfReviews,

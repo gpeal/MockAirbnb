@@ -1,11 +1,11 @@
 package com.airbnb;
 
-import android.app.Activity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 
 import butterknife.ButterKnife;
 
-public class MainActivity extends Activity {
+public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
 
     @Override
@@ -26,7 +26,7 @@ public class MainActivity extends Activity {
         args.putLong(ListingFragment.ARG_LISTING_ID, id);
         frag.setArguments(args);
 
-        getFragmentManager().beginTransaction()
+        getSupportFragmentManager().beginTransaction()
                 .replace(R.id.container, frag)
                 .addToBackStack(null)
                 .commit();
@@ -38,7 +38,7 @@ public class MainActivity extends Activity {
         args.putLong(HeroFragment.ARG_HERO_ID, id);
         frag.setArguments(args);
 
-        getFragmentManager().beginTransaction()
+        getSupportFragmentManager().beginTransaction()
                 .replace(R.id.container, frag)
                 .addToBackStack(null)
                 .commit();

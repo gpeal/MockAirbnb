@@ -3,12 +3,6 @@ package com.airbnb.ui;
 import android.content.Context;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
-import android.text.Spannable;
-import android.text.SpannableString;
-import android.text.Spanned;
-import android.text.TextPaint;
-import android.text.style.MetricAffectingSpan;
-import android.text.style.RelativeSizeSpan;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.widget.ImageView;
@@ -71,37 +65,7 @@ public class ListingItemLayout extends RelativeLayout {
                     .centerCrop()
                     .into(mHostImageView);
         }
-
-        // The dollar sign is slightly smaller and top aligned in the TextView.
-        Spannable span = new SpannableString(listingItem.title);
-        float relativeTextSize = 0.75f;
-        span.setSpan(new RelativeSizeSpan(relativeTextSize), 0, 1, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-        span.setSpan(new TopAlignmentSpan(relativeTextSize), 0, 1, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-        mTitleView.setText(span);
+        mTitleView.setText(TextUtils.formatPrice(listingItem.title));
         mDescriptionView.setText(listingItem.description);
-    }
-
-    /**
-     * Text span to align the smaller $ in a listing's title view to the top of the text.
-     */
-    private static final class TopAlignmentSpan extends MetricAffectingSpan {
-        private final double mRatio;
-
-        /**
-         * @param relativeSize The relative size of the dollar sign compared to normal text.
-         */
-        public TopAlignmentSpan(double relativeSize) {
-            mRatio = 1 - relativeSize;
-        }
-
-        @Override
-        public void updateDrawState(TextPaint paint) {
-            paint.baselineShift += (int) (paint.ascent() * mRatio);
-        }
-
-        @Override
-        public void updateMeasureState(TextPaint paint) {
-            paint.baselineShift += (int) (paint.ascent() * mRatio);
-        }
     }
 }

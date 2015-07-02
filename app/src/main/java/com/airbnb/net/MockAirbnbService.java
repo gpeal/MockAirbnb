@@ -73,9 +73,9 @@ public class MockAirbnbService implements AirbnbService {
                         Uri.parse("https://a0.muscache.com/ac/pictures/32061843/a454953d_original.jpg?interpolation=lanczos-none&size=large&output-format=jpg&output-quality=70")
                 } /** images */,
                 false /** isStarred */,
-                19500 /** price */,
+                "$195" /** price */,
                 true /** instant bookable */,
-                5.0f /** rating */,
+                4.1f /** rating */,
                 69 /** number of reviews */,
                 Uri.parse("https://a2.muscache.com/ac/users/5517174/profile_pic/1427385973/original.jpg?interpolation=lanczos-none&crop=w:w;*,*&crop=h:h;*,*&resize=225:*&output-format=jpg&output-quality=70") /** host image */,
                 "Kevin & Vicky" /** host name */,

@@ -10,4 +10,5 @@
 
     <!-- Listing -->
     <string name="error_loading_listing">Error loading listing</string>
+    <string name="per_night">Per night</string>
 </resources>
