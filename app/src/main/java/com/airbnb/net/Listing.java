@@ -1,7 +1,10 @@
 package com.airbnb.net;
 
+import android.content.Context;
 import android.net.Uri;
 import android.support.annotation.IntDef;
+
+import com.airbnb.R;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
@@ -81,4 +84,14 @@ public class Listing {
         this.address = address;
     }
 
+    public CharSequence getRoomTypeString(Context context) {
+        switch(roomType) {
+            case ROOM_TYPE_PRIVATE_ROOM:
+                return context.getString(R.string.private_room);
+            case ROOM_TYPE_ENTIRE_HOME:
+                return context.getString(R.string.entire_home);
+            default:
+                throw new IllegalArgumentException("Unknown room type (" + roomType + ")");
+        }
+    }
 }

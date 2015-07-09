@@ -50,9 +50,9 @@
                         android:id="@+id/price"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginBottom="-4dp"
                         android:textColor="@android:color/white"
-                        android:textSize="20dp"
-                        android:textStyle="bold"
+                        android:textSize="16dp"
                         tools:text="$56"/>
 
                     <TextView
@@ -60,17 +60,15 @@
                         android:layout_height="wrap_content"
                         android:text="@string/per_night"
                         android:textColor="@android:color/white"
-                        android:textSize="12dp"/>
+                        android:textSize="8dp"/>
                 </LinearLayout>
             </FrameLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="196dp"
-                android:orientation="vertical"
-                android:paddingLeft="48dp"
-                android:paddingRight="48dp"
-                android:gravity="center_horizontal" >
+                android:layout_height="500dp"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/listing_name"
@@ -79,13 +77,14 @@
                     android:layout_marginTop="8dp"
                     android:gravity="center_horizontal"
                     android:textSize="22dp"
-                    tools:text="John Steinbeck's Cottage"/>
+                    tools:text="John Steinbeck's Cottage"
+                    android:textColor="?android:attr/textColorPrimary"/>
 
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_marginTop="8dp">
+                    android:layout_marginTop="8dp"
+                    android:orientation="horizontal">
 
                     <ImageView
                         android:id="@+id/star_1"
@@ -126,8 +125,8 @@
                         android:id="@+id/num_reviews"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:fontFamily="sans-serif-light"
                         android:layout_gravity="center_vertical"
+                        android:fontFamily="sans-serif-light"
                         android:paddingStart="8dp"
                         android:textSize="10sp"/>
                 </LinearLayout>
@@ -137,6 +136,38 @@
                     android:layout_width="64dp"
                     android:layout_height="64dp"
                     android:layout_marginTop="8dp"/>
+
+                <TextView
+                    android:id="@+id/room_type"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"/>
+
+                <TextView
+                    android:id="@+id/hosted_by"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/contact_host"
+                    android:textColor="#d1ff3140"/>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.6dp"
+                    android:layout_marginLeft="@dimen/default_side_padding"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginRight="@dimen/default_side_padding"
+                    android:background="#ffcccccc" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="128dp"
+                android:background="@color/background_light_grey"
+                android:orientation="vertical" >
 
             </LinearLayout>
         </LinearLayout>

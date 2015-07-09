@@ -53,12 +53,12 @@ public class HeroItemLayout extends FrameLayout {
         if (heroItem.imageUri != null) {
             Picasso.with(getContext())
                     .load(heroItem.imageUri)
-                    .placeholder(R.color.hero_placeholder)
+                    .placeholder(R.color.background_light_grey)
                     .fit()
                     .centerCrop()
                     .into(imageView);
         } else {
-            imageView.setBackgroundResource(R.color.hero_placeholder);
+            imageView.setBackgroundResource(R.color.background_light_grey);
         }
     }
 }

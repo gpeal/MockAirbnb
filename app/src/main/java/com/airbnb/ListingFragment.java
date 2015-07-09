@@ -23,6 +23,7 @@ import butterknife.InjectView;
 import rx.Observer;
 import rx.android.schedulers.AndroidSchedulers;
 
+
 public class ListingFragment extends Fragment {
     private static final String TAG = "ListingFragment";
     public static final String ARG_LISTING_ID = "listing_id";
@@ -38,6 +39,8 @@ public class ListingFragment extends Fragment {
     @InjectView(R.id.star_5) public ImageView mStar5;
     @InjectView(R.id.num_reviews) public TextView mNumReviewsView;
     @InjectView(R.id.host_image) public ImageView mHostImageView;
+    @InjectView(R.id.room_type) public TextView mRoomTypeView;
+    @InjectView(R.id.hosted_by) public TextView mHostedByView;
 
     @Nullable
     @Override
@@ -95,9 +98,9 @@ public class ListingFragment extends Fragment {
         mToolbar.setSubtitle(listing.location);
         Picasso.with(getActivity())
                 .load(listing.images[0])
-                .placeholder(R.color.hero_placeholder)
+                .placeholder(R.color.background_light_grey)
                 .fit()
-                .centerInside()
+                .centerCrop()
                 .into(mListingImageView);
         mPriceView.setText(TextUtils.formatPrice(listing.price));
         mListingNameView.setText(listing.title);
@@ -109,9 +112,11 @@ public class ListingFragment extends Fragment {
         mNumReviewsView.setText("" + listing.numberOfReviews);
         Picasso.with(getActivity())
                 .load(listing.hostImage)
-                .placeholder(R.color.hero_placeholder)
+                .placeholder(R.color.background_light_grey)
                 .fit()
                 .centerCrop()
                 .into(mHostImageView);
+        mRoomTypeView.setText(listing.getRoomTypeString(getActivity()));
+        mHostedByView.setText(getActivity().getString(R.string.hosted_by, listing.hostName));
     }
 }

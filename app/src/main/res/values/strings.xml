@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:xliff="http://schemas.android.com/apk/res-auto">
     <string name="app_name">Airbnb</string>
 
     <!-- Drawer -->
@@ -11,4 +11,11 @@
     <!-- Listing -->
     <string name="error_loading_listing">Error loading listing</string>
     <string name="per_night">Per night</string>
+    <string name="contact_host">Contact Host</string>
+    <string name="hosted_by">
+        Hosted by
+        <xliff:g id="name" example="Victoria">%s</xliff:g>
+    </string>
+    <string name="private_room">Private Room</string>
+    <string name="entire_home">Entire Home</string>
 </resources>
