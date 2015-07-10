@@ -83,7 +83,7 @@ public class MockAirbnbService implements AirbnbService {
                 5 /** number of guests */,
                 1 /** number of bedrooms */,
                 1 /** number of beds */,
-                Uri.parse("http://TOP_REVIEW_IMAGE") /** top review image */,
+                Uri.parse("https://a2.muscache.com/ac/users/4346177/profile_pic/1354866284/original.jpg?interpolation=lanczos-none&crop=w:w;*,*&crop=h:h;*,*&resize=225:*&output-format=jpg&output-quality=70") /** top review image */,
                 "Nina" /** top review name */,
                 new GregorianCalendar(2015, 06, 01).getTimeInMillis() /** top review date */,
                 "We had the best time at the Steinbeck cottage. The place is really very very nice, " +

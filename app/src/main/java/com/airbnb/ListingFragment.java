@@ -5,6 +5,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.format.DateFormat;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -41,6 +42,14 @@ public class ListingFragment extends Fragment {
     @InjectView(R.id.host_image) public ImageView mHostImageView;
     @InjectView(R.id.room_type) public TextView mRoomTypeView;
     @InjectView(R.id.hosted_by) public TextView mHostedByView;
+    @InjectView(R.id.number_of_guests) public TextView mNumberOfGuestsView;
+    @InjectView(R.id.number_of_beds) public TextView mNumberOfBedsView;
+    @InjectView(R.id.number_of_bedrooms) public TextView mNumberOfBedroomsView;
+    @InjectView(R.id.number_of_reviews) public TextView mNumberOfReviewsView;
+    @InjectView(R.id.reviewer_image) public ImageView mReviewerImageView;
+    @InjectView(R.id.reviewer_name) public TextView mReviewerNameView;
+    @InjectView(R.id.review_date) public TextView mReviewDateView;
+    @InjectView(R.id.review) public TextView mReviewView;
 
     @Nullable
     @Override
@@ -118,5 +127,19 @@ public class ListingFragment extends Fragment {
                 .into(mHostImageView);
         mRoomTypeView.setText(listing.getRoomTypeString(getActivity()));
         mHostedByView.setText(getActivity().getString(R.string.hosted_by, listing.hostName));
+        mNumberOfGuestsView.setText(getActivity().getString(R.string.number_of_guests, listing.numberOfGuests));
+        mNumberOfBedroomsView.setText(getActivity().getString(R.string.number_of_bedrooms, listing.numberOfBedrooms));
+        mNumberOfBedsView.setText(getActivity().getString(R.string.number_of_beds, listing.numberOfBeds));
+        mNumberOfReviewsView.setText(getResources().getQuantityString(R.plurals.number_of_reviews, listing.numberOfReviews, listing.numberOfReviews));
+        Picasso.with(getActivity())
+                .load(listing.topReviewImage)
+                .placeholder(R.color.background_light_grey)
+                .fit()
+                .centerCrop()
+                .into(mReviewerImageView);
+        mReviewerNameView.setText(listing.topReviewName);
+        CharSequence date = DateFormat.format("MMM yyyy", listing.topReviewDate);
+        mReviewDateView.setText(date);
+        mReviewView.setText(listing.topReviewReview);
     }
 }

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -11,13 +12,16 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="?android:attr/actionBarSize"
+        android:layout_alignParentTop="true"
+        android:background="?android:attr/colorPrimary"
         android:elevation="@dimen/toolbar_elevation"/>
+
 
     <ScrollView
         android:id="@+id/scroll_view"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_height="match_parent"
+        android:layout_below="@id/toolbar"
         android:fillViewport="true">
 
         <LinearLayout
@@ -27,7 +31,7 @@
 
             <FrameLayout
                 android:layout_width="match_parent"
-                android:layout_height="196dp"
+                android:layout_height="240dp"
                 android:background="#ffaaaaaa">
 
                 <ImageView
@@ -40,7 +44,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="bottom|start"
                     android:layout_marginBottom="16dp"
-                    android:background="#af333333"
+                    android:background="#c0333333"
                     android:gravity="center"
                     android:orientation="vertical"
                     android:paddingLeft="6dp"
@@ -50,9 +54,9 @@
                         android:id="@+id/price"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="-4dp"
+                        android:layout_marginBottom="-2dp"
                         android:textColor="@android:color/white"
-                        android:textSize="16dp"
+                        android:textSize="22dp"
                         tools:text="$56"/>
 
                     <TextView
@@ -60,13 +64,13 @@
                         android:layout_height="wrap_content"
                         android:text="@string/per_night"
                         android:textColor="@android:color/white"
-                        android:textSize="8dp"/>
+                        android:textSize="14dp"/>
                 </LinearLayout>
             </FrameLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="500dp"
+                android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
                 android:orientation="vertical">
 
@@ -76,9 +80,9 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:gravity="center_horizontal"
-                    android:textSize="22dp"
-                    tools:text="John Steinbeck's Cottage"
-                    android:textColor="?android:attr/textColorPrimary"/>
+                    android:textColor="?android:attr/textColorPrimary"
+                    android:textSize="24dp"
+                    tools:text="John Steinbeck's Cottage"/>
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -126,50 +130,184 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
-                        android:fontFamily="sans-serif-light"
                         android:paddingStart="8dp"
-                        android:textSize="10sp"/>
+                        android:textSize="14sp"/>
                 </LinearLayout>
 
                 <com.airbnb.ui.RoundedImageView
                     android:id="@+id/host_image"
-                    android:layout_width="64dp"
-                    android:layout_height="64dp"
-                    android:layout_marginTop="8dp"/>
+                    android:layout_width="@dimen/listing_person_image_size"
+                    android:layout_height="@dimen/listing_person_image_size"
+                    android:layout_marginTop="12dp"/>
 
                 <TextView
                     android:id="@+id/room_type"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"/>
+                    android:textSize="20sp"/>
 
                 <TextView
                     android:id="@+id/hosted_by"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"/>
+                    android:textSize="18sp"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
                     android:text="@string/contact_host"
-                    android:textColor="#d1ff3140"/>
+                    android:textColor="#d1ff3140"
+                    android:textSize="18sp"/>
+
                 <View
                     android:layout_width="match_parent"
-                    android:layout_height="0.6dp"
-                    android:layout_marginLeft="@dimen/default_side_padding"
+                    android:layout_height="@dimen/separator_height"
+                    android:layout_marginLeft="@dimen/side_padding"
+                    android:layout_marginRight="@dimen/side_padding"
                     android:layout_marginTop="16dp"
-                    android:layout_marginRight="@dimen/default_side_padding"
-                    android:background="#ffcccccc" />
+                    android:background="@color/separator_color"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="96dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/icon_p3_guests"
+                            android:tint="?android:attr/textColor"/>
+
+                        <TextView
+                            android:id="@+id/number_of_guests"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/icon_p3_rooms"
+                            android:tint="?android:attr/textColor"/>
+
+                        <TextView
+                            android:id="@+id/number_of_bedrooms"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/icon_p3_beds"
+                            android:tint="?android:attr/textColor"/>
+
+                        <TextView
+                            android:id="@+id/number_of_beds"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+                    </LinearLayout>
+                </LinearLayout>
             </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/separator_height"
+                android:background="@color/separator_color"/>
+
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="128dp"
-                android:background="@color/background_light_grey"
-                android:orientation="vertical" >
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:background="#fff7f7f7"
+                android:orientation="vertical">
 
+                <TextView
+                    android:id="@+id/number_of_reviews"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:textColor="?android:attr/textColorPrimary"
+                    android:textSize="20sp"/>
+
+                <com.airbnb.ui.RoundedImageView
+                    android:id="@+id/reviewer_image"
+                    android:layout_width="@dimen/listing_person_image_size"
+                    android:layout_height="@dimen/listing_person_image_size"
+                    android:layout_marginTop="8dp"
+                    app:strokeWidth="3dp"/>
+
+                <TextView
+                    android:id="@+id/reviewer_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:paddingLeft="@dimen/side_padding"
+                    android:paddingRight="@dimen/side_padding"
+                    android:singleLine="true"
+                    android:textColor="?android:attr/textColorPrimary"
+                    android:textSize="18sp"/>
+
+                <TextView
+                    android:id="@+id/review_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:singleLine="true"
+                    android:textSize="16sp"/>
+
+                <TextView
+                    android:id="@+id/review"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:ellipsize="end"
+                    android:gravity="center_horizontal"
+                    android:paddingLeft="@dimen/side_padding"
+                    android:paddingRight="@dimen/side_padding"
+                    android:maxLines="4"
+                    android:textSize="16sp"/>
+                <Button
+                    android:layout_width="112dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="16dp"
+                    android:background="@drawable/red_stroke_button"
+                    android:text="@string/view_all"
+                    android:textColor="?android:attr/colorAccent"
+                    android:textSize="16sp"/>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="64dp" />
             </LinearLayout>
         </LinearLayout>
     </ScrollView>
-</LinearLayout>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="54dp"
+        android:layout_alignParentBottom="true"
+        android:text="@string/request_to_book"
+        android:background="@drawable/request_to_book_background"
+        android:textColor="@android:color/white"
+        android:textSize="16sp"/>
+</RelativeLayout>

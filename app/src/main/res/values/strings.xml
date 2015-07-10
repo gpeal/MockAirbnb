@@ -18,4 +18,22 @@
     </string>
     <string name="private_room">Private Room</string>
     <string name="entire_home">Entire Home</string>
+    <string name="number_of_guests">
+        <xliff:g id="number" example="4">%s</xliff:g>
+        guests
+    </string>
+    <string name="number_of_bedrooms">
+        <xliff:g id="number" example="4">%s</xliff:g>
+        bedrooms
+    </string>
+    <string name="number_of_beds">
+        <xliff:g id="number" example="4">%s</xliff:g>
+        beds
+    </string>
+    <string name="view_all">View All</string>
+    <string name="request_to_book">Request to Book</string>
+    <plurals name="number_of_reviews">
+        <item quantity="one">%d review</item>
+        <item quantity="other">%d reviews</item>
+    </plurals>
 </resources>
