@@ -27,6 +27,8 @@ public class MainActivity extends AppCompatActivity {
         frag.setArguments(args);
 
         getSupportFragmentManager().beginTransaction()
+                .setCustomAnimations(R.anim.listing_fragment_in, R.anim.listing_fragment_out,
+                        R.anim.listing_fragment_in, R.anim.listing_fragment_out)
                 .replace(R.id.container, frag)
                 .addToBackStack(null)
                 .commit();
@@ -39,6 +41,8 @@ public class MainActivity extends AppCompatActivity {
         frag.setArguments(args);
 
         getSupportFragmentManager().beginTransaction()
+                .setCustomAnimations(R.anim.listing_fragment_in, R.anim.listing_fragment_out,
+                        R.anim.listing_fragment_in, R.anim.listing_fragment_out)
                 .replace(R.id.container, frag)
                 .addToBackStack(null)
                 .commit();

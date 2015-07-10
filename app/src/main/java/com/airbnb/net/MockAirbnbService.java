@@ -18,11 +18,11 @@ public class MockAirbnbService implements AirbnbService {
     public Observable<List<ListItem>> getSearchTabItems() {
         List<ListItem> items = new ArrayList<>();
         int textBackgroundColor = 0xffb19a40;
+        Uri listingUri = Uri.parse("https://a0.muscache.com/ac/pictures/24433197/e593c170_original.jpg?interpolation=lanczos-none&size=x_medium&output-format=jpg&output-quality=70");
+        Uri hostUri = Uri.parse("https://a2.muscache.com/ac/users/5517174/profile_pic/1427385973/original.jpg?interpolation=lanczos-none&crop=w:w;*,*&crop=h:h;*,*&resize=225:*&output-format=jpg&output-quality=70");
+        items.add(new ListItem(new ListingItem(6, "Kevin & Vicky", "$195", "Pacific Grove, CA", listingUri, hostUri)));
         Uri backgroundUri = Uri.parse("http://sportsplanningguide.com/wp-content/uploads/2013/12/Lake-Tahoe-Sunset-1.png");
         items.add(new ListItem(new HeroItem(1, "Lake Tahoe", "Popular Destination", backgroundUri, 0)));
-        Uri listingUri = Uri.parse("https://a0.muscache.com/ac/pictures/24433197/e593c170_original.jpg?interpolation=lanczos-none&size=x_medium&output-format=jpg&output-quality=70");
-        Uri hostUri = Uri.parse("https://a1.muscache.com/ac/users/5283465/profile_pic/1433105369/original.jpg?interpolation=lanczos-none&crop=w:w;*,*&crop=h:h;*,*&resize=68:*&output-format=jpg&output-quality=70");
-        items.add(new ListItem(new ListingItem(6, "Bryan", "$295", "Albert Park, Australia", listingUri, hostUri)));
         backgroundUri = Uri.parse("https://newevolutiondesigns.com/images/freebies/los-angeles-santa-monica.jpg");
         items.add(new ListItem(new HeroItem(2, "Los Angeles", "Popular Destination", backgroundUri, 0)));
         backgroundUri = Uri.parse("http://www.travellinguide.com/uploads/images/fotogaleri/2015/Mart/21-things-you-can-do-in-san-francisco-for-free.jpg");
