@@ -18,7 +18,7 @@ import butterknife.InjectView;
 
 public class MessageItemLayout extends RelativeLayout {
 
-    @InjectView(R.id.host_image) RoundedImageView mHostImageView;
+    @InjectView(R.id.hostImage) RoundedImageView mHostImageView;
     @InjectView(R.id.host_name) TextView mHostNameView;
     @InjectView(R.id.message) TextView mMessageView;
     @InjectView(R.id.status_and_listing_name) TextView mStatusAndListingNameView;

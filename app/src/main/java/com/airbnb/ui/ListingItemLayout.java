@@ -18,8 +18,8 @@ import butterknife.InjectView;
 
 public class ListingItemLayout extends RelativeLayout {
 
-    @InjectView(R.id.listing_image) public ImageView mListingImageView;
-    @InjectView(R.id.host_image) public ImageView mHostImageView;
+    @InjectView(R.id.listingImage) public ImageView mListingImageView;
+    @InjectView(R.id.hostImage) public ImageView mHostImageView;
     @InjectView(R.id.title) public TextView mTitleView;
     @InjectView(R.id.description) public TextView mDescriptionView;
 

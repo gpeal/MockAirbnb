@@ -3,12 +3,12 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto" >
     <ImageView
-        android:id="@+id/listing_image"
+        android:id="@+id/listingImage"
         android:layout_width="match_parent"
         android:layout_height="256dp"
         android:layout_alignParentTop="true" />
     <com.airbnb.ui.RoundedImageView
-        android:id="@+id/host_image"
+        android:id="@+id/hostImage"
         android:layout_width="52dp"
         android:layout_height="52dp"
         android:layout_alignParentEnd="true"
@@ -21,7 +21,7 @@
         android:id="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/listing_image"
+        android:layout_below="@id/listingImage"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:textColor="#ff555555"
