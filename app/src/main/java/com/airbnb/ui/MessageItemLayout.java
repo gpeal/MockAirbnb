@@ -47,24 +47,24 @@ public class MessageItemLayout extends RelativeLayout {
     }
 
     public void setMessage(Message message) {
-        mHostNameView.setText(message.listingItem.host);
-        mMessageView.setText(message.message);
-        mStatusAndListingNameView.setText(getStatusAndListingText(message.status, message.listingItem.title));
-        String date = DateUtils.formatDateTime(getContext(), message.date, DateUtils.FORMAT_ABBREV_ALL);
+        mHostNameView.setText(message.getListingItem().host);
+        mMessageView.setText(message.getMessage());
+        mStatusAndListingNameView.setText(getStatusAndListingText(message.getStatus(), message.getListingItem().title));
+        String date = DateUtils.formatDateTime(getContext(), message.getDate(), DateUtils.FORMAT_ABBREV_ALL);
         mDateView.setText(date);
 
-        if (message.listingItem.hostImageUri != null) {
+        if (message.getListingItem().hostImageUri != null) {
             Picasso.with(getContext())
-                    .load(message.listingItem.hostImageUri)
+                    .load(message.getListingItem().hostImageUri)
                     .fit()
                     .centerCrop()
                     .into(mHostImageView);
         }
     }
 
-    private CharSequence getStatusAndListingText(@Message.Status int status, CharSequence title) {
-        CharSequence statusText = Message.getStatusText(status);
-        int statusColor = Message.getStatusColor(getResources(), status);
+    private CharSequence getStatusAndListingText(Message.Status status, CharSequence title) {
+        CharSequence statusText = Message.Companion.getStatusText(status);
+        int statusColor = Message.Companion.getStatusColor(getResources(), status);
         SpannableString spannableString = new SpannableString(statusText + " • " + title);
         spannableString.setSpan(new ForegroundColorSpan(statusColor), 0, statusText.length(), 0);
         return spannableString;

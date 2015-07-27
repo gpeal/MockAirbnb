@@ -6,7 +6,6 @@ import android.text.format.DateUtils;
 import com.airbnb.Message;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
 
@@ -59,7 +58,7 @@ public class MockAirbnbService implements AirbnbService {
         ListingItem listingItem = new ListingItem(1, "Kevin & Vicky", title, description, listingtUri, hostUri);
         long date = System.currentTimeMillis() - DateUtils.DAY_IN_MILLIS;
         String message = "Just wanted to touch base to make sure you guys arrived safely last night and that you have settled in nicely";
-        messages.add(new Message(listingItem, message, date, Message.STATUS_ACCEPTED));
+        messages.add(new Message(listingItem, message, date, Message.Status.ACCEPTED));
         return Observable.just(messages);
     }
 

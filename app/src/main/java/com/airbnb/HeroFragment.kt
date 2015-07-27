@@ -7,24 +7,20 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 
-import butterknife.ButterKnife
-import butterknife.InjectView
+import kotlinx.android.synthetic.hero_fragment.*
 
 public class HeroFragment : Fragment() {
 
-    InjectView(R.id.text) public var mTextView: TextView
-
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view = inflater!!.inflate(R.layout.hero_fragment, container, false)
-        ButterKnife.inject(this, view)
-
         if (getArguments() == null || !getArguments().containsKey(ARG_HERO_ID)) {
             throw IllegalArgumentException("You must specify a hero id!")
         }
+        return inflater!!.inflate(R.layout.hero_fragment, container, false)
+    }
 
-        mTextView.setText("Hero item id " + getArguments().getLong(ARG_HERO_ID))
-
-        return view
+    override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        text.setText("Hero item id " + getArguments().getLong(ARG_HERO_ID))
     }
 
     companion object {
