@@ -1,5 +1,6 @@
 package com.airbnb;
 
+import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -16,7 +17,7 @@ import rx.android.schedulers.AndroidSchedulers;
 public class SearchController implements ViewController {
     private static final String TAG = "SearchController";
 
-    private final MainActivity mActivity;
+    private final Context mActivity;
 
     private SearchTabAdapter mAdapter;
 
