@@ -22,7 +22,7 @@ public class MessagesAdapter : RecyclerView.Adapter<ViewHolder>() {
     }
 
     override fun getItemCount(): Int {
-        return if (mMessages == null) 0 else mMessages!!.size()
+        return mMessages?.size() ?: 0
     }
 
     public fun setMessages(messages: List<Message>) {

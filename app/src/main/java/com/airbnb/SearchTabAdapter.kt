@@ -58,7 +58,7 @@ public class SearchTabAdapter(private val mActivity: MainActivity) : RecyclerVie
     }
 
     override fun getItemCount(): Int {
-        return if (mItems == null) 0 else mItems!!.size()
+        return mItems?.size() ?: 0
     }
 
     public fun setItems(items: List<ListItem>) {
