@@ -1,5 +1,6 @@
 package com.airbnb;
 
+import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -24,8 +25,9 @@ public class WishListController implements ViewController {
         mActivity = activity;
     }
 
+    @NonNull
     @Override
-    public ViewGroup initialize(ViewGroup container) {
+    public ViewGroup initialize(@NonNull ViewGroup container) {
         LayoutInflater inflater = LayoutInflater.from(mActivity);
         RecyclerView rv = (RecyclerView) inflater.inflate(R.layout.recycler_view, container, false);
         mAdapter = new WishListAdapter(mActivity);
@@ -37,7 +39,7 @@ public class WishListController implements ViewController {
     }
 
     private void loadSearchTab() {
-        AirbnbAdapter.getInstance().getWishList()
+        AirbnbAdapter.Companion.getInstance().getWishList()
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Observer<List<HeroItem>>() {
                     @Override

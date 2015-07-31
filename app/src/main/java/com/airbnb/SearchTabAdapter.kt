@@ -2,12 +2,11 @@ package com.airbnb
 
 import android.support.annotation.LayoutRes
 import android.support.v7.widget.RecyclerView
-import android.util.Log
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-
+import com.airbnb.net.HeroItem
 import com.airbnb.net.ListItem
+import com.airbnb.net.ListingItem
 import com.airbnb.ui.HeroItemLayout
 import com.airbnb.ui.ListingItemLayout
 
@@ -36,12 +35,14 @@ public class SearchTabAdapter(private val mActivity: MainActivity) : RecyclerVie
 
         when (holder.getItemViewType()) {
             VIEW_TYPE_HERO -> {
-                (holder.itemView as HeroItemLayout).setHeroItem(item.heroItem)
-                holder.itemView.setOnClickListener({mActivity.showHeroItem(item.heroItem.id)})
+                val heroItem = item.heroItem as HeroItem
+                (holder.itemView as HeroItemLayout).setHeroItem(heroItem)
+                holder.itemView.setOnClickListener({mActivity.showHeroItem(heroItem.id)})
             }
             VIEW_TYPE_LISTING -> {
-                (holder.itemView as ListingItemLayout).setListing(item.listingItem)
-                holder.itemView.setOnClickListener({mActivity.showListing(item.listingItem.id)})
+                val listingItem = item.listingItem as ListingItem
+                (holder.itemView as ListingItemLayout).setListing(listingItem)
+                holder.itemView.setOnClickListener({mActivity.showListing(listingItem.id)})
             }
         }
     }
