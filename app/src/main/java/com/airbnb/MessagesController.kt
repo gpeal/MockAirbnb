@@ -30,6 +30,6 @@ public class MessagesController(private val mContext: Context) : ViewController 
     private fun loadMessages() {
         AirbnbAdapter.getInstance().getMessages()
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe({ messages -> mAdapter!!.setMessages(messages)})
+                .subscribe({ messages -> mAdapter.setMessages(messages)})
     }
 }

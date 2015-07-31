@@ -14,9 +14,9 @@ import com.squareup.picasso.Picasso
 
 public class HeroItemLayout @jvmOverloads constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0) : FrameLayout(context, attrs, defStyleAttr) {
 
-    public var mTitleView: TextView
-    public var mTextView: TextView
-    public var mBackgroundImageView: ImageView
+    private var mTitleView: TextView
+    private var mTextView: TextView
+    private var mBackgroundImageView: ImageView
 
     init {
         val inflater = LayoutInflater.from(context)
