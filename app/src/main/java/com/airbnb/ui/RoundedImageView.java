@@ -25,7 +25,6 @@ import com.airbnb.R;
  */
 public class RoundedImageView extends ImageView {
 
-    private final int mStrokeColor;
     private final int mStrokeWidth;
     private final Paint mStrokePaint = new Paint();
 
@@ -39,11 +38,11 @@ public class RoundedImageView extends ImageView {
         super(context, attrs, defStyle);
 
         TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.RoundedImageView);
-        mStrokeColor = ta.getColor(R.styleable.RoundedImageView_strokeColor, Color.WHITE);
+        int strokeColor = ta.getColor(R.styleable.RoundedImageView_strokeColor, Color.WHITE);
         mStrokeWidth = ta.getDimensionPixelSize(R.styleable.RoundedImageView_strokeWidth, (int) dpToPx(2));
         mStrokePaint.setStyle(Paint.Style.STROKE);
         mStrokePaint.setStrokeWidth(mStrokeWidth);
-        mStrokePaint.setColor(mStrokeColor);
+        mStrokePaint.setColor(strokeColor);
         ta.recycle();
     }
 
