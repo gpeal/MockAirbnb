@@ -12,7 +12,7 @@ import retrofit.http.Path
 import rx.Observable
 
 public class MockAirbnbService : AirbnbService {
-    override fun getSearchTabItems(): Observable<MutableList<ListItem>> {
+    override fun getSearchTabItems(): Observable<List<ListItem>> {
         val items = ArrayList<ListItem>()
         val textBackgroundColor = -5137856
         val listingUri = Uri.parse("https://a0.muscache.com/ac/pictures/24433197/e593c170_original.jpg?interpolation=lanczos-none&size=x_medium&output-format=jpg&output-quality=70")
@@ -31,20 +31,20 @@ public class MockAirbnbService : AirbnbService {
         items.add(ListItem(HeroItem(8, "Chicago", null, null, 0)))
         items.add(ListItem(HeroItem(9, "Washington DC", null, null, 0)))
         items.add(ListItem(HeroItem(10, "Los Angeles", null, null, 0)))
-        return Observable.just<MutableList<ListItem>>(items)
+        return Observable.just<List<ListItem>>(items)
     }
 
-    override fun getWishList(): Observable<MutableList<HeroItem>> {
+    override fun getWishList(): Observable<List<HeroItem>> {
         val textBackgroundColor = -5137856
         val uri = Uri.parse("https://a0.muscache.com/ac/pictures/24433197/e593c170_original.jpg?interpolation=lanczos-none&size=x_medium&output-format=jpg&output-quality=70")
         val items = ArrayList<HeroItem>()
         items.add(HeroItem(1, "Mobile Starred Listings", "2 Listings - Private", uri, textBackgroundColor))
         items.add(HeroItem(2, "Dream Homes", "0 Listings", uri, textBackgroundColor))
         items.add(HeroItem(3, "Vacation Places", "0 Listings", uri, textBackgroundColor))
-        return Observable.just<MutableList<HeroItem>>(items)
+        return Observable.just<List<HeroItem>>(items)
     }
 
-    override fun getMessages(): Observable<MutableList<Message>> {
+    override fun getMessages(): Observable<List<Message>> {
         val messages = ArrayList<Message>()
 
         val title = "John Steinbeck's Cottage"
@@ -55,7 +55,7 @@ public class MockAirbnbService : AirbnbService {
         val date = System.currentTimeMillis() - DateUtils.DAY_IN_MILLIS
         val message = "Just wanted to touch base to make sure you guys arrived safely last night and that you have settled in nicely"
         messages.add(Message(listingItem, message, date, Message.Status.ACCEPTED))
-        return Observable.just<MutableList<Message>>(messages)
+        return Observable.just<List<Message>>(messages)
     }
 
     override fun getListing(Path("id") id: Long): Observable<Listing> {

@@ -27,7 +27,7 @@ public class SearchController(private val mActivity: MainActivity) : ViewControl
     }
 
     private fun loadSearchTab() {
-        AirbnbAdapter.getInstance().getSearchTabItems()
+        AirbnbAdapter.getSearchTabItems()
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({listItems -> mAdapter!!.setItems(listItems)})
     }

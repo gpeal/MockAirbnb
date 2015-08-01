@@ -9,13 +9,13 @@ import rx.Observable
 interface AirbnbService {
 
     GET("/search_tab")
-    public fun getSearchTabItems(): Observable<MutableList<ListItem>>
+    public fun getSearchTabItems(): Observable<List<ListItem>>
 
     GET("/wish_list")
-    public fun getWishList(): Observable<MutableList<HeroItem>>
+    public fun getWishList(): Observable<List<HeroItem>>
 
     GET("/messages")
-    public fun getMessages(): Observable<MutableList<Message>>
+    public fun getMessages(): Observable<List<Message>>
 
     GET("/listing/{id}")
     public fun getListing(Path("id") id: Long): Observable<Listing>

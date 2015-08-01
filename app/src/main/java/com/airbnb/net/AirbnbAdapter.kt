@@ -8,19 +8,8 @@ import retrofit.http.Path
 import rx.Observable
 import kotlin.properties.Delegates
 
-public class AirbnbAdapter private constructor() : AirbnbService {
-    companion object {
-        private val USE_MOCK_ADAPTER = true
-
-
-        private val sInstance: AirbnbAdapter by Delegates.lazy {
-            AirbnbAdapter()
-        }
-
-        synchronized public fun getInstance(): AirbnbAdapter {
-            return sInstance
-        }
-    }
+public object AirbnbAdapter : AirbnbService {
+    private val USE_MOCK_ADAPTER = true
 
     private var mService: AirbnbService
 
@@ -40,15 +29,15 @@ public class AirbnbAdapter private constructor() : AirbnbService {
         }
     }
 
-    override fun getSearchTabItems(): Observable<MutableList<ListItem>> {
+    override fun getSearchTabItems(): Observable<List<ListItem>> {
         return mService.getSearchTabItems()
     }
 
-    override fun getWishList(): Observable<MutableList<HeroItem>> {
+    override fun getWishList(): Observable<List<HeroItem>> {
         return mService.getWishList()
     }
 
-    override fun getMessages(): Observable<MutableList<Message>> {
+    override fun getMessages(): Observable<List<Message>> {
         return mService.getMessages()
     }
 

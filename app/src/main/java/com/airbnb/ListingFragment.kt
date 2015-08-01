@@ -44,7 +44,7 @@ public class ListingFragment : Fragment() {
         })
 
         val id = getArguments().getLong(ARG_LISTING_ID)
-        AirbnbAdapter.getInstance().getListing(id).observeOn(AndroidSchedulers.mainThread())
+        AirbnbAdapter.getListing(id).observeOn(AndroidSchedulers.mainThread())
                 .subscribe(object : Observer<Listing> {
                     override fun onCompleted() { }
 
