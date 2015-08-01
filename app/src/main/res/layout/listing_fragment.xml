@@ -171,64 +171,29 @@
                     android:layout_width="match_parent"
                     android:layout_height="96dp"
                     android:gravity="center_vertical"
-                    android:orientation="horizontal">
-
-                    <LinearLayout
+                    android:orientation="horizontal"
+                    android:baselineAligned="false">
+                    <TextView
+                        android:id="@+id/numberOfGuests"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:gravity="center"
-                        android:orientation="vertical">
-
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:src="@drawable/icon_p3_guests"
-                            android:tint="?android:attr/textColor"/>
-
-                        <TextView
-                            android:id="@+id/numberOfGuests"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"/>
-                    </LinearLayout>
-
-                    <LinearLayout
+                        android:drawableTop="@drawable/icon_p3_guests_tinted" />
+                    <TextView
+                        android:id="@+id/numberOfBedrooms"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:gravity="center"
-                        android:orientation="vertical">
-
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:src="@drawable/icon_p3_rooms"
-                            android:tint="?android:attr/textColor"/>
-
-                        <TextView
-                            android:id="@+id/numberOfBedrooms"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"/>
-                    </LinearLayout>
-
-                    <LinearLayout
+                        android:drawableTop="@drawable/icon_p3_rooms_tinted" />
+                    <TextView
+                        android:id="@+id/numberOfBeds"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:gravity="center"
-                        android:orientation="vertical">
-
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:src="@drawable/icon_p3_beds"
-                            android:tint="?android:attr/textColor"/>
-
-                        <TextView
-                            android:id="@+id/numberOfBeds"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"/>
-                    </LinearLayout>
+                        android:drawableTop="@drawable/icon_p3_beds_tinted" />
                 </LinearLayout>
             </LinearLayout>
 
